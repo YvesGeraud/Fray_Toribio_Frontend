@@ -157,16 +157,45 @@ const pillars = [
       </UButton>
     </section>
 
-    <section class="content-section intro-home">
-      <RevealContent class="intro-heading">
-        <p class="section-label">NUESTRA ESCUELA</p>
-        <h2>Una secundaria para<br><em>crecer con propósito.</em></h2>
-      </RevealContent>
-      <RevealContent class="intro-copy" :delay="120">
-        <p>El Colegio Fray Toribio de Benavente ofrece educación secundaria general en Xicohtzinco. En este portal, las familias pueden conocer la identidad de la institución, su propuesta educativa y las vías de contacto.</p>
-        <NuxtLink class="underlined-link" to="/el-colegio">Conoce el colegio <UIcon name="i-lucide-arrow-right" class="size-4" /></NuxtLink>
-      </RevealContent>
+    <!-- Carrusel de Convocatorias y Avisos (Componente Estructural: CarouselBanner) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 border-b border-slate-200/80">
+      <div class="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <p class="eyebrow !mb-1">
+            <span class="eyebrow-rule" />
+            COMUNICADOS Y ACTIVIDADES
+          </p>
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#12396d]">
+            Vida y actualidad en la secundaria
+          </h2>
+        </div>
+        <NuxtLink to="/vida-escolar" class="text-sm font-semibold text-[#174789] hover:underline inline-flex items-center gap-1.5">
+          <span>Ver todas las novedades</span>
+          <UIcon name="i-lucide-arrow-right" class="size-4" />
+        </NuxtLink>
+      </div>
+
+      <CarouselBanner :slides="slidesAvisos" :autoplay="true" :interval="6000" />
     </section>
+
+    <!-- Bloque Estructural: ContentSplitSection (Nuestra Escuela) -->
+    <ContentSplitSection
+      badge="NUESTRA ESCUELA"
+      title="Una secundaria para crecer con propósito."
+      subtitle="El Colegio Fray Toribio de Benavente ofrece educación secundaria general en Xicohtzinco. En este portal, las familias pueden conocer la identidad de la institución, su propuesta educativa y las vías de contacto directo."
+      :features="schoolFeatures"
+      image-src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80"
+      image-alt="Alumnos en clase participativa en Colegio Fray Toribio"
+    >
+      <template #actions>
+        <UButton to="/el-colegio" color="neutral" size="md" trailing-icon="i-lucide-arrow-right">
+          Conoce más del colegio
+        </UButton>
+        <UButton to="/contacto" variant="outline" color="neutral" size="md">
+          Contáctanos
+        </UButton>
+      </template>
+    </ContentSplitSection>
 
     <section class="pillars-section">
       <div class="section-heading-row">
@@ -182,10 +211,27 @@ const pillars = [
       </div>
     </section>
 
-    <section class="home-school-life">
-      <div class="life-photo"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=85" alt="Aula y actividades en una escuela" loading="lazy"></div>
-      <div class="life-copy"><p class="section-label section-label-light">VIDA ESCOLAR</p><h2>La escuela también<br>se construye <em>juntos.</em></h2><p>Noticias, eventos y fotografías de la comunidad escolar tendrán su espacio aquí, con información publicada por la institución.</p><UButton to="/vida-escolar" color="neutral" variant="outline" trailing-icon="i-lucide-arrow-right">Explora la vida escolar</UButton></div>
-    </section>
+    <!-- Bloque Estructural: ContentSplitSection Invertido (Vida Escolar) -->
+    <ContentSplitSection
+      :reverse="true"
+      badge="VIDA ESCOLAR"
+      title="La escuela también se construye juntos."
+      subtitle="Noticias, eventos y proyectos colaborativos de la comunidad escolar para fortalecer el compañerismo y el sentido cívico."
+      :features="[
+        'Actividades cívicas, torneos deportivos y conmemoraciones patrias.',
+        'Muestras pedagógicas y proyectos de ciencias en equipo.',
+        'Participación activa y coordinada con las familias de Xicohtzinco.'
+      ]"
+      image-src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=85"
+      image-alt="Actividades dinámicas en el colegio"
+      class="bg-slate-50/70 border-y border-slate-200/80 my-8"
+    >
+      <template #actions>
+        <UButton to="/vida-escolar" color="neutral" variant="outline" trailing-icon="i-lucide-arrow-right">
+          Explora la galería y vida escolar
+        </UButton>
+      </template>
+    </ContentSplitSection>
 
     <section class="admissions-cta">
       <div><p class="section-label section-label-light">ADMISIONES</p><h2>¿Buscas secundaria<br>para tu familia?</h2><p>Solicita información oficial sobre requisitos, fechas y proceso de ingreso.</p></div>

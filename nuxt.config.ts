@@ -26,6 +26,15 @@ export default defineNuxtConfig({
       ],
     },
   },
+  vite: {
+    optimizeDeps: {
+      include: [
+        'clsx',
+        'tailwind-merge',
+        'lucide-vue-next',
+      ],
+    },
+  },
   nitro: {
     publicAssets: [
       {
