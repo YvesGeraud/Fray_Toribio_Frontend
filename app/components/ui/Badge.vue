@@ -15,7 +15,8 @@ const variantClasses = {
   default: 'bg-primary/10 text-primary border border-primary/20',
   secondary: 'bg-secondary text-secondary-foreground border border-border',
   outline: 'border border-border text-foreground',
-  accent: 'bg-accent/15 text-accent-foreground border border-accent/30 font-semibold',
+  // En oscuro el texto usa el propio acento: accent-foreground (oscuro) no se leería sobre fondo negro
+  accent: 'bg-accent/15 text-accent-foreground dark:text-accent border border-accent/30 font-semibold',
   success: 'bg-success/10 text-success border border-success/20',
   destructive: 'bg-destructive/10 text-destructive border border-destructive/20',
 }

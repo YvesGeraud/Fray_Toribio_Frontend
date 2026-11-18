@@ -8,6 +8,7 @@ const links = [
   { label: 'Oferta educativa', to: '/oferta-educativa' },
   { label: 'Vida escolar', to: '/vida-escolar' },
   { label: 'Admisiones', to: '/admisiones' },
+  { label: 'Portales', to: '/portales' },
   { label: 'Contacto', to: '/contacto' },
 ]
 
@@ -19,8 +20,45 @@ const isActive = (to: string) => {
 
 <template>
   <div class="utility-bar">
-    <span>Institución educativa · Xicohtzinco, Tlaxcala</span>
-    <span class="utility-cct">CCT 29PES0084Y</span>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <span>Institución educativa · Xicohtzinco, Tlaxcala</span>
+      <span class="utility-cct hidden sm:inline">CCT 29PES0084Y</span>
+    </div>
+    <div class="hidden lg:flex items-center gap-3.5 text-[11px] font-semibold tracking-normal normal-case">
+      <span class="text-white/60 uppercase tracking-widest text-[9.5px]">Plataformas:</span>
+      <a
+        href="https://colegiofraymotolinia.servoescolar.mx/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white/90 hover:text-amber-300 transition-colors inline-flex items-center gap-1"
+        title="Acceso a calificaciones y boletas escolares"
+      >
+        <span>Control Escolar</span>
+        <UIcon name="i-lucide-external-link" class="size-3 opacity-70" />
+      </a>
+      <span class="opacity-30">|</span>
+      <a
+        href="https://suite.amco.me/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white/90 hover:text-amber-300 transition-colors inline-flex items-center gap-1"
+        title="Plataforma de enseñanza y recursos digitales AMCO"
+      >
+        <span>Suite AMCO</span>
+        <UIcon name="i-lucide-external-link" class="size-3 opacity-70" />
+      </a>
+      <span class="opacity-30">|</span>
+      <a
+        href="https://compradelibros.amco.me/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white/90 hover:text-amber-300 transition-colors inline-flex items-center gap-1"
+        title="Tienda oficial para adquisición de libros de texto y licencias"
+      >
+        <span>Compra de Libros</span>
+        <UIcon name="i-lucide-external-link" class="size-3 opacity-70" />
+      </a>
+    </div>
   </div>
   <header class="site-header">
     <NuxtLink class="school-brand" to="/" aria-label="Colegio Fray Toribio de Benavente, inicio" @click="menuOpen = false">

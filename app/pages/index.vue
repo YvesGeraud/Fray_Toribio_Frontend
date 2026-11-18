@@ -1,11 +1,23 @@
 <script setup lang="ts">
 import CarouselBanner, { type SlideItem } from '~/components/blocks/CarouselBanner.vue'
 import ContentSplitSection from '~/components/blocks/ContentSplitSection.vue'
+import FeatureGrid, { type FeatureItem } from '~/components/blocks/FeatureGrid.vue'
+import { portalesEscolares } from '~/data/portales.datos'
 
 useSeoMeta({
   title: 'Inicio | Colegio Fray Toribio de Benavente',
   description: 'Conoce el Colegio Fray Toribio de Benavente en Xicohtzinco, Tlaxcala. Secundaria General, vida escolar e información para familias.',
 })
+
+const portalItems: FeatureItem[] = portalesEscolares.map((portal) => ({
+  title: portal.titulo,
+  text: portal.descripcion,
+  image: portal.imagen,
+  imageAlt: portal.imagenAlt,
+  badge: portal.badge,
+  href: portal.url,
+  linkLabel: portal.textoEnlace,
+}))
 
 const slidesAvisos: SlideItem[] = [
   {
@@ -210,6 +222,38 @@ const pillars = [
         </RevealContent>
       </div>
     </section>
+
+    <!-- Sección de Portales y Sistemas Escolares (FeatureGrid del catálogo) -->
+    <FeatureGrid
+      id="portales"
+      eyebrow="PLATAFORMAS Y SERVICIOS DIGITALES"
+      title="Sistemas y accesos escolares"
+      highlight="accesos escolares"
+      lead="Consulta directa al sistema de control escolar, al aula digital de aprendizaje AMCO y a la plataforma oficial para adquisición de libros y materiales."
+      :items="portalItems"
+      :cols="3"
+      variant="card"
+      image-aspect="video"
+      :numbered="true"
+      class="bg-slate-50/70 border-y border-slate-200/80 my-8"
+    >
+      <template #footer>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-between p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs gap-4 max-w-7xl mx-auto">
+          <div class="flex items-center gap-3">
+            <span class="p-2.5 rounded-xl bg-primary/10 text-primary">
+              <UIcon name="i-lucide-help-circle" class="size-5" />
+            </span>
+            <div>
+              <strong class="text-sm font-bold text-slate-800">¿Necesitas orientación sobre tus accesos o credenciales?</strong>
+              <p class="text-xs text-slate-500">Revisa la guía detallada de ingreso o solicita apoyo a la administración escolar.</p>
+            </div>
+          </div>
+          <UButton to="/portales" color="neutral" variant="outline" trailing-icon="i-lucide-arrow-right">
+            Ver guía de portales
+          </UButton>
+        </div>
+      </template>
+    </FeatureGrid>
 
     <!-- Bloque Estructural: ContentSplitSection Invertido (Vida Escolar) -->
     <ContentSplitSection
